@@ -1,0 +1,57 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'boot 5/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+    <title>Django  -Note App</title>
+</head>
+<body>
+    {% for messages in messages %}
+    <div class="alert alert-warning alert-dismissible fade show">{{messages}}</div>
+    {% endfor %} 
+    <nav>
+        <div class="row">
+            <div class="col-8">
+                <p style="font-style: italic;">
+                    <span style="color: blue;">
+                    Flexy</span>  
+                   <span style="color: pink;">Note</span>
+                   <span style="color: blue;">App</span> 
+                </p>
+            </div> 
+            <div class="col-2">
+                <a href="add" class="float-end">Add Note</a>
+            </div>
+            <div class="col-2">
+                <a href="alarm" class="float-end">Set Alarm</a>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <ol>
+            {% for note in note reversed %}
+            <li>
+                <span>
+                    <a href="view/{{note.id}}" id="note" style="color: black;text-decoration: none;">{{note.title|truncatewords:4}}....</a>
+                    <a href="delete/{{note.id}}" class="close float-end btn btn-danger">Delete</a>
+                </span> 
+            </li>        
+            {% endfor %}
+            
+            <div>
+                {% if not note %}
+                    <p style="text-align: center;font-size: 44px;font-family: 'Lucida Handwriting';color:pink">No Note</p>
+                     <img src="{% static 'notes.png' %}" alt="" style="display:block; margin-right:auto; margin-left:auto;">
+                {% endif %}
+            </div>
+                      
+                      
+        </ol> 
+    </div>
+ 
+</body>
+ 
+</html>

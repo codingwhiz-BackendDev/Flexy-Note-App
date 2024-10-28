@@ -1,0 +1,44 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'addstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'boot 5/css/bootstrap.css' %}">
+    <title>Django  - Crud</title>
+</head>
+<body>
+  {% for messages in messages %}
+  <div class="alert alert-warning alert-dismissible fade show">{{messages}}</div>
+  {% endfor %}
+    <div class="body">
+
+        <h3>
+          Add Note
+          <a href="/" class="btn btn-outline-danger float-end">Back</a>
+        </h3> 
+
+        
+
+        <form action="add" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <p>Note Title</p>
+          <input type="text" spellcheck="false" name="title"required>
+      
+          <p>Note Text</p> 
+          <textarea name="text" spellcheck="false" cols="100" rows="7"></textarea>
+          
+          <br><br>
+          
+          <input type="file" name="image">
+          <br><br>
+          <input class="btn btn-primary text-white" type="submit" value="Save Note"><br>
+          
+        </form>
+
+    </div>
+</body>
+<script src="emma.js"></script>
+</html>

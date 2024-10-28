@@ -1,0 +1,64 @@
+*{
+  box-sizing: border-box;
+}
+nav{
+    background-color: rgb(3, 34, 47);
+    color: white;
+    padding: 20px;
+}
+div a{
+    color: white;
+    text-decoration: none;
+    font-size: large;
+}
+ol {
+    margin: 0;
+    padding: 0;
+  }
+ 
+  ol li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: pink;
+    font-size: 18px;
+    margin-bottom: 7px;
+  }
+  
+  ol li:nth-child(odd) {
+    background: blue;
+  }
+ 
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 13px 17px 13px 17px;
+    text-decoration: none;
+    color: white;
+  }
+  p{
+    font-size: 44px;
+    font-family: 'Lucida Handwriting';
+  }
+  
+  
+#footer{
+  position: absolute;
+  bottom: 0;
+  display: none;
+  right: 0;
+}
+.about{
+  position: absolute;
+  bottom: 0;
+   
+}
+ 
+@media only screen and (max-width: 375px) {
+  p{
+    font-size: 35px;
+  }
+   
+}

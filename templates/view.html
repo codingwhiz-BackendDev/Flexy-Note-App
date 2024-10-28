@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'addstyles.css' %}">
+  <link rel="stylesheet" href="{% static 'boot 5/css/bootstrap.css' %}">
+  <title>Django - Note App</title>
+</head>
+
+<body>
+  {% for messages in messages %}
+  <div class="alert alert-warning alert-dismissible fade show">{{messages}}</div>
+  {% endfor %}
+  <div class="body">
+    <h3>
+      view Note
+      <a href="/" style="margin-left:12px" class="btn btn-outline-danger float-end">Back</a>
+    </h3>
+
+
+
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <p>Note Title</p>
+      <input type="text" id="title" spellcheck="false" name="title" required value="{{note.title}}">
+
+      <p>Note Text</p>
+      <textarea spellcheck="false" id="change" name="text" cols="100" rows="7">{{note.text}}
+          </textarea>
+
+      {% if note.image %}
+      <div class="row g-2">
+        <div class="col mb-2">
+          <a href="{{note.image.url}}">
+            <img src="{{note.image.url}}" alt="image 1" class="w-100 rounded-3">
+          </a><a href="delete_image/{{note.id}}">Delete photo</a>
+        </div>
+      </div>
+      {% endif %}
+
+      <input type="file" name="image" accept="image/*">
+      <br><br>
+      <input class="btn btn-primary text-white" type="submit" value="Save Note">
+
+    </form>
+
+  </div>
+</body>
+
+</html>

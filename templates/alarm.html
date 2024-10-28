@@ -1,0 +1,131 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'boot 5/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="row">
+            <div class="col-12" style="text-align:center">
+                <p style="font-size: 44px;font-family: 'Lucida Handwriting';font-style: italic;">
+                    <span style="color: blue;">
+                    Flexy</span>  
+                   <span style="color: pink;">Note</span>
+                   <span style="color: blue;">App</span>
+                </p>
+                <p>Add Alarm to notify you 
+                  <a href="/" class="btn btn-outline-danger float-end">Back</a>
+                </p>
+            </div> 
+        </div>
+    </nav>
+    <br><br>
+
+ 
+       <div id="showcase" class="alert alert-warning alert-dismissible fade show"></div>
+    
+
+    <nav>
+        <div> 
+            
+<!--                 
+                <label for="hour">Input your Alarm Hour</label>
+                <input id="hour" name="hour" type="number" min="1" max="12"> <br> <br>
+ 
+                 <label for="minutes">Input your Alarm Minutes</label>
+                <input id="minutes" name="minutes" type="number" min="1" max="60"> <br> <br> -->
+
+                <!-- <label for="songs" name>Please select alarm ringtone</label><br><br>
+                <input name="songs" type="file"> <br><br>  -->
+
+                <!-- <input type="text" placeholder="Input Alarm name" name="caption"> <br><br> -->
+                <label for="">Please set Alarm time</label>
+                <input type="time" id="alarmtime">
+           
+                <br><br>
+                    <audio id="songs" controls>
+                        <source src="{% static 'songs.mp3' %}" type="audio/mp3">
+                    </audio>
+               
+                    
+      
+                <br><br>
+
+                <input onclick="myVar= setInterval(me, 1000)" type="submit" value="Save alarm" name="" class="btn btn-outline-primary btn-sm">
+                <button onclick="clearInterval(myVar)" class="btn btn-outline-danger btn-sm">Enable Pause Song</button>
+   
+                
+        </div>
+    </nav>
+</body>
+<!-- <script>
+    function time() {
+        hour = document.getElementById("hour").value
+        minutes = document.getElementById("minutes").value
+        songs = document.getElementById("songs")
+        console.log(hour+':'+ minutes)
+    
+        var date = new Date()
+        date_hour = date.getHours()
+        if(date_hour > 12) {
+            date_hour = date_hour-12
+        }
+        if(date_hour == 0){
+            date_hour = 12
+        }
+        console.log(date_hour)
+        document.getElementById('showcase').innerHTML = 'Alarm already set'
+        console.log(date.getMinutes())
+    
+        if(date_hour == hour && date.getMinutes() == minutes) {
+            songs.play()
+        }
+    }
+  
+    function clear(){
+        songs = document.getElementById("songs")
+        if(songs.paused){
+            songs.play()
+        }else{
+            songs.pause()
+            clearInterval(myVar)
+        }
+    }
+</script> -->
+<script>
+    function me(){
+        alarmtime = document.getElementById("alarmtime").value
+        var date = new Date()
+        date_hour = date.getHours()
+        date_minutes = date.getMinutes()
+
+        console.log(date_hour)
+        if(date_hour >= 0 || date_hour < 10){
+            date_hour = '0'+ '' + date_hour
+        }
+       
+        if(date_minutes < 10){
+            date_minutes = '0'+''+ date_minutes
+        }
+       
+        realtime = date_hour+':'+date_minutes
+        console.log('real time is '+realtime)
+        console.log('alarm time is '+alarmtime)
+
+        time_diff = Number(alarmtime) + Number(date_hour)
+        document.getElementById('showcase').innerHTML = 'Alarm already set   ';
+        
+    
+        if(realtime == alarmtime) {
+            songs.play()
+            document.getElementById('showcase').innerHTML = ''
+        }
+    }
+        
+</script>
+</html>
